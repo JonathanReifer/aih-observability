@@ -23,11 +23,6 @@ exporters:
     default_labels_enabled:
       exporter: false
       job: true
-    labels:
-      attributes:
-        session_id: ""
-        model: ""
-        backend: ""
 
   prometheusremotewrite:
     endpoint: http://prometheus:9090/api/v1/write
@@ -45,7 +40,7 @@ service:
     traces:
       receivers: [otlp]
       processors: [batch, resource]
-      exporters: [loki, debug]
+      exporters: [debug]
     metrics:
       receivers: [otlp]
       processors: [batch]
